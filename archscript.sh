@@ -73,9 +73,4 @@ else
 	echo -n "Swap size?: "
 	read swap_size
 	parted "SWAP" linux-swap +$root_size $swap_size
-
-
-
-
-
-
+echo "Swap Done"
