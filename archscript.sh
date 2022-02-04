@@ -30,17 +30,16 @@ fi
 echo "Make new partition table?[Y/n]"
 read part_new
 
-if [[ $part_new ==y ]]
+if [[ $part_new == 'n' ]]
 then
+	echo "Not remaking partition table"
+else
 	if [[ $GPT == 0 ]]
 	then
 		echo "Making MBR partition table"
-	fi
 	else
 		echo "Making a new GPT table"
-else
-	echo "Not remaking partition table"
-
+	fi
 fi
 
 
