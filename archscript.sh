@@ -6,7 +6,7 @@ timedatectl set-ntp true && echo "time set with sucess" #Sets time on ISO
 echo "If on GPT, say 1; if MBR say 0" #Ask for GPT and store
 read GPT
 
-echo "What disk do you want to use?"
+echo -n "What disk do you want to use? [/dev/sdx]"
 read disk
 
 #gonna start the actual partitioning
