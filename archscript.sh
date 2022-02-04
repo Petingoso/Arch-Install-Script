@@ -5,7 +5,6 @@ timedatectl set-ntp true && echo "time set with sucess" #Sets time on ISO
 
 echo "If on GPT, say 1; if MBR say 0" #Ask for GPT and store
 read GPT
-echo "$GPT"
 
 echo "What disk do you want to use?"
 read disk
@@ -27,3 +26,5 @@ else
 	fi
 fi
 
+#gonna start the actual partitioning
+echo "Efi Value is $GPT, efi_path is $efi_path and efi_new is $efi_new"
