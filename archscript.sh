@@ -36,6 +36,10 @@ else
 	echo -n "Make new efi partition? [Y/n]: "
 	read efi_new
 	efi_path="${disk}1"
+	echo -n "What's the size?:[300M]"
+	read efi_size
+	parted mkpart "EFI system partition" fat32 $efi_size
+
 	}
 
 	if [[ efi_new == 'n' ]]
