@@ -12,12 +12,16 @@ read disk
 
 
 if $GPT==0
+then
 	echo"Skipping efi"
 else
+	{
 	echo"Make new efi partition? [y/n]"
 	read efi_new
+	}
 
 	if efi_new == 'n'
+	then
 		echo "What's your efi partition?[/dev/disk1]"
 		read efi_path
 	fi
