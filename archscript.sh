@@ -38,7 +38,7 @@ else
 	efi_path="${disk}1"
 	echo -n "What's the size?[300M]: "
 	read efi_size
-	parted $disk mkpart "EFI_ARCH" fat32 $efi_size
+	parted $disk mkpart "EFI_ARCH" fat32 1M $efi_size
 
 	}
 
