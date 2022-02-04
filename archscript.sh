@@ -1,7 +1,7 @@
 #!/bin/sh -e
 echo "This is my shitty arch install script, caps sensisitive so pls follow the stuff"
 
-timedatectl set-ntp true && echo "time set with sucess" #Sets time on ISO
+timedatectl set-ntp true && echo "Time was set with sucess" #Sets time on ISO
 
 echo -n "If on GPT, say 1; if MBR say 0: " #Ask for GPT and store
 read GPT
@@ -20,8 +20,11 @@ else
 	if [[ $GPT == 0 ]]
 	then
 		echo "Making MBR partition table"
+		parted $disk mklabel msdos
+
 	else
 		echo "Making a new GPT table"
+		parted $disk mklabel gpt
 	fi
 fi
 
