@@ -33,14 +33,14 @@ then
 	echo "Skipping efi questions"
 else
 	{
-	echo "Make new efi partition? [Y/n]: "
+	echo -n "Make new efi partition? [Y/n]: "
 	read efi_new
-	efi_path = '$disk' + '1'
+	$efi_path = '$disk' + '1'
 	}
 
 	if [[ efi_new == 'n' ]]
 	then
-		echo "What's your efi partition?[/dev/disk1]: "
+		echo -n "What's your efi partition?[/dev/disk1]: "
 		read efi_path
 	fi
 fi
