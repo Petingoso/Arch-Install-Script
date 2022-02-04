@@ -59,9 +59,9 @@ if [[ $GPT == 1 ]]
 	parted mkpart "ARCH_ROOT" $root_fs $efi_size +$root_size
 	echo "Made root with $root_fs with $root_size"
 else
+do
 	parted mkpart "ARCH_ROOT" $root_fs 1M +$root_size
 	echo "Made root with $root_fs with $root_size"
-fi
 
 echo "Make swap? [Y/n]: "
 read swap_yes
