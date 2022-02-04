@@ -36,9 +36,9 @@ else
 	echo -n "Make new efi partition? [Y/n]: "
 	read efi_new
 	efi_path="${disk}1"
-	echo -n "What's the size?[300M]: "
+	echo -n "What's the size?: "
 	read efi_size
-	parted $disk mkpart "EFI_ARCH" fat32 1M $($efi_size || 300M )
+	parted $disk mkpart "EFI_ARCH" fat32 1M +$efi_size
 
 	}
 
@@ -48,6 +48,33 @@ else
 		read efi_path
 	fi
 fi
+
+echo -n "What's the root size?: "
+read root_size
+
+echo -n "Root filesystem? [ext4]: "
+read root_fs
+
+if [[ $GPT == 1 ]]
+do
+	parted mkpart "ARCH_ROOT" $root_fs $efi_size +$root_size
+	echo "Made root with $root_fs with $root_size"
+else
+	parted mkpart "ARCH_ROOT" $root_fs 1M +$root_size
+	echo "Made root with $root_fs with $root_size"
+
+echo "Make swap? [Y/n]: "
+read swap_yes
+
+if [[ $swap_yes == 'n' ]]
+do
+	echo -n "Skipping Swap"
+else
+	echo -n "Swap size?: "
+	read swap_size
+	parted "SWAP" linux-swap +$root_size $swap_size
+
+
 
 
 
