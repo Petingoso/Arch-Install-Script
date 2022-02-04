@@ -35,6 +35,7 @@ else
 	{
 	echo "Make new efi partition? [Y/n]: "
 	read efi_new
+	efi_path = '$disk' + '1'
 	}
 
 	if [[ efi_new == 'n' ]]
@@ -44,6 +45,6 @@ else
 	fi
 fi
 
-
+echo "$efi_path"
 
 
