@@ -11,7 +11,7 @@ echo "What disk do you want to use?"
 read disk
 
 
-if [$GPT==0]
+if [$GPT=='0']
 then
 	echo"Skipping efi"
 else
