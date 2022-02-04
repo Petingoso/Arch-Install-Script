@@ -12,10 +12,10 @@ read disk
 
 if [[ $GPT == '0' ]]
 then
-	echo "Skipping efi"
+	echo "Skipping efi questions"
 else
 	{
-	echo "Make new efi partition? [y/n]"
+	echo "Make new efi partition? [Y/n]"
 	read efi_new
 	}
 
@@ -27,4 +27,23 @@ else
 fi
 
 #gonna start the actual partitioning
-echo "Efi Value is $GPT, efi_path is $efi_path and efi_new is $efi_new"
+echo "Make new partition table?[Y/n]"
+read part_new
+
+if [[ $part_new ==y ]]
+then
+	if [[ $GPT == 0 ]]
+	then
+		echo "Making MBR partition table"
+	fi
+	else
+		echo "Making a new GPT table"
+else
+	echo "Not remaking partition table"
+
+fi
+
+
+
+
+
