@@ -56,7 +56,6 @@ echo -n "Root filesystem? [ext4]: "
 read root_fs
 
 if [[ $GPT == 1 ]]
-do
 	parted mkpart "ARCH_ROOT" $root_fs $efi_size +$root_size
 	echo "Made root with $root_fs with $root_size"
 else
