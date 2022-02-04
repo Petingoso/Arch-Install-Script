@@ -9,23 +9,6 @@ read GPT
 echo "What disk do you want to use?"
 read disk
 
-
-if [[ $GPT == '0' ]]
-then
-	echo "Skipping efi questions"
-else
-	{
-	echo "Make new efi partition? [Y/n]"
-	read efi_new
-	}
-
-	if [[ efi_new == 'n' ]]
-	then
-		echo "What's your efi partition?[/dev/disk1]"
-		read efi_path
-	fi
-fi
-
 #gonna start the actual partitioning
 echo "Make new partition table?[Y/n]"
 read part_new
@@ -42,6 +25,21 @@ else
 	fi
 fi
 
+if [[ $GPT == '0' ]]
+then
+	echo "Skipping efi questions"
+else
+	{
+	echo "Make new efi partition? [Y/n]"
+	read efi_new
+	}
+
+	if [[ efi_new == 'n' ]]
+	then
+		echo "What's your efi partition?[/dev/disk1]"
+		read efi_path
+	fi
+fi
 
 
 
